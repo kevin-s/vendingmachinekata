@@ -9,6 +9,7 @@
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VendingMachineTest {
@@ -17,6 +18,7 @@ public class VendingMachineTest {
     public void testMachineStartup() {
 
         VendingMachine machine = new VendingMachine();
-        assertTrue(true);
+
+        assertEquals("INSERT COIN", machine.getDisplay());
     }
 }
