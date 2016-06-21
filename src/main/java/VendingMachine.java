@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Kevin
@@ -7,17 +10,22 @@
  */
 public class VendingMachine {
 
-    private String currentDisplay = "INSERT COIN";
+    private static String INITIAL_MESSAGE = "INSERT COIN";
+    private BigDecimal currentValue = new BigDecimal(0);
 
     public VendingMachine() {
 
     }
 
     public String getDisplay() {
-        return currentDisplay;
+        if (new BigDecimal(0).equals(currentValue)) {
+            return INITIAL_MESSAGE;
+        }
+
+        return NumberFormat.getCurrencyInstance().format(this.currentValue);
     }
 
     public void insertCoin(double diameter, double weight) {
-        currentDisplay = "$0.25";
+        currentValue = currentValue.add(BigDecimal.valueOf(0.25));
     }
 }
