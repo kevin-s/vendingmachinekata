@@ -97,7 +97,9 @@ public class VendingMachine {
             return 1.00;
         } else if (ProductConstants.CANDY.equals(product)) {
             return 0.65;
-        } 
+        } else if (ProductConstants.CHIPS.equals(product)) {
+            return 0.50;
+        }
         return 0;
     }
 

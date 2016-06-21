@@ -114,6 +114,21 @@ public class VendingMachineTest {
     }
 
     @Test
+    public void testBuyChips() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        assertEquals("$1.00", machine.getDisplay());
+
+        machine.selectProduct(ProductConstants.CHIPS);
+        assertEquals("THANK YOU", machine.getDisplay());
+        assertEquals("$0.50", machine.getDisplay());
+
+    }
+
+    @Test
     public void testNotEnough() {
         VendingMachine machine = new VendingMachine();
         machine.insertCoin(1.0, 5.67);
