@@ -95,7 +95,9 @@ public class VendingMachine {
     private double getPriceOfProduct(String product) {
         if (ProductConstants.COLA.equals(product)) {
             return 1.00;
-        }
+        } else if (ProductConstants.CANDY.equals(product)) {
+            return 0.65;
+        } 
         return 0;
     }
 

@@ -7,4 +7,6 @@
  */
 public class ProductConstants {
     public static final String COLA = "cola";
+    public static final String CANDY = "candy";
+
 }
