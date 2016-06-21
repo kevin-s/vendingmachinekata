@@ -142,4 +142,13 @@ public class VendingMachineTest {
 
         assertEquals("INSERT COIN", machine.getDisplay());
     }
+
+    @Test
+    public void coinReturnStartsWithNothing() {
+        VendingMachine machine = new VendingMachine();
+
+        assertEquals("INSERT COIN", machine.getDisplay());
+        assertEquals("$0.00", machine.getCoinReturn());
+    }
+
 }

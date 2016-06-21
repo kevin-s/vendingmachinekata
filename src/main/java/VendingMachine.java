@@ -12,6 +12,8 @@ public class VendingMachine {
 
     private static String INITIAL_MESSAGE = "INSERT COIN";
     private BigDecimal currentValue = new BigDecimal(0);
+    private BigDecimal coinReturnValue = new BigDecimal(0);
+
 
     private String specialMessageState = null;
 
@@ -95,5 +97,17 @@ public class VendingMachine {
             return 1.00;
         }
         return 0;
+    }
+
+    public void makeChange() {
+        this.coinReturnValue = this.currentValue;
+        this.currentValue = BigDecimal.valueOf(0);
+
+    }
+
+    public String getCoinReturn() {
+        String coinReturnValueString = this.formatBigDecimalAsString(this.coinReturnValue);
+        this.coinReturnValue = BigDecimal.valueOf(0);
+        return coinReturnValueString;
     }
 }
