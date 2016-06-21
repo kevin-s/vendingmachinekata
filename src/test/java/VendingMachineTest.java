@@ -38,4 +38,14 @@ public class VendingMachineTest {
 
         assertEquals("$0.50", machine.getDisplay());
     }
+
+    @Test
+    public void testThreeQuarters() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+
+        assertEquals("$0.75", machine.getDisplay());
+    }
 }
