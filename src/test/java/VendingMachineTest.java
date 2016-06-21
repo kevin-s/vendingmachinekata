@@ -56,4 +56,22 @@ public class VendingMachineTest {
 
         assertEquals("$0.10", machine.getDisplay());
     }
+
+    @Test
+    public void testOneDimeOneQuarter() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(0.705, 2.27);
+        machine.insertCoin(1.0, 5.67);
+
+        assertEquals("$0.35", machine.getDisplay());
+    }
+
+    @Test
+    public void testOneDimeOneQuarterAnyOrder() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(0.705, 2.27);
+
+        assertEquals("$0.35", machine.getDisplay());
+    }
 }
