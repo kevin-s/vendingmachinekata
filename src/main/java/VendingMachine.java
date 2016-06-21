@@ -13,12 +13,20 @@ public class VendingMachine {
     private static String INITIAL_MESSAGE = "INSERT COIN";
     private BigDecimal currentValue = new BigDecimal(0);
 
+    private String specialMessageState = null;
+
     public VendingMachine() {
 
     }
 
     public String getDisplay() {
-        if (new BigDecimal(0).equals(currentValue)) {
+        if (this.specialMessageState != null) {
+            String tempMessage = this.specialMessageState;
+            this.specialMessageState = null;
+            return tempMessage;
+        }
+
+        if (BigDecimal.valueOf(0).compareTo(currentValue) == 0) {
             return INITIAL_MESSAGE;
         }
 
@@ -65,5 +73,21 @@ public class VendingMachine {
             this.currentValue = this.currentValue.add(BigDecimal.valueOf(0.05));
         }
 
+    }
+
+    public void selectProduct(String product) {
+        if (this.currentValue.compareTo(BigDecimal.valueOf(this.getPriceOfProduct(product))) == -1) {
+            this.specialMessageState = "PRICE " + this.getPriceOfProduct(product);
+        } else {
+            this.currentValue = this.currentValue.subtract(BigDecimal.valueOf(this.getPriceOfProduct(product)));
+            this.specialMessageState = "THANK YOU";
+        }
+    }
+
+    private double getPriceOfProduct(String product) {
+        if (ProductConstants.COLA.equals(product)) {
+            return 1.00;
+        }
+        return 0;
     }
 }
