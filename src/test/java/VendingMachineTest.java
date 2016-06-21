@@ -129,6 +129,41 @@ public class VendingMachineTest {
     }
 
     @Test
+    public void testBuyTwoChips() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        assertEquals("$1.00", machine.getDisplay());
+
+        machine.selectProduct(ProductConstants.CHIPS);
+        machine.selectProduct(ProductConstants.CHIPS);
+        assertEquals("THANK YOU", machine.getDisplay());
+        assertEquals("INSERT COIN", machine.getDisplay());
+
+    }
+
+    @Test
+    public void testBuyCandyAndCola() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        machine.insertCoin(1.0, 5.67);
+        assertEquals("$1.75", machine.getDisplay());
+
+        machine.selectProduct(ProductConstants.CANDY);
+        machine.selectProduct(ProductConstants.COLA);
+        assertEquals("THANK YOU", machine.getDisplay());
+        assertEquals("$0.10", machine.getDisplay());
+
+    }
+
+    @Test
     public void testNotEnough() {
         VendingMachine machine = new VendingMachine();
         machine.insertCoin(1.0, 5.67);
