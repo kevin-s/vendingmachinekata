@@ -21,4 +21,12 @@ public class VendingMachineTest {
 
         assertEquals("INSERT COIN", machine.getDisplay());
     }
+
+    @Test
+    public void testQuarter() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+
+        assertEquals("$0.25", machine.getDisplay());
+    }
 }

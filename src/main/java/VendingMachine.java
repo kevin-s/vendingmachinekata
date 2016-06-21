@@ -7,12 +7,17 @@
  */
 public class VendingMachine {
 
+    private String currentDisplay = "INSERT COIN";
+
     public VendingMachine() {
 
     }
 
     public String getDisplay() {
-        return "INSERT COIN";
+        return currentDisplay;
     }
 
+    public void insertCoin(double diameter, double weight) {
+        currentDisplay = "$0.25";
+    }
 }
