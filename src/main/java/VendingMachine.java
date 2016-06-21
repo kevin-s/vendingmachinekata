@@ -33,10 +33,13 @@ public class VendingMachine {
     }
 
     private int checkDiameter(double diameter) {
+        // coin weights & sizes from https://www.usmint.gov/about_the_mint/?action=coin_specifications
         if (diameter == 1.0) {
             return CoinConstants.QUARTER;
         } else if (diameter == 0.705) {
             return CoinConstants.DIME;
+        } else if (diameter == 0.835) {
+            return CoinConstants.NICKEL;
         }
         return CoinConstants.INVALID;
     }
@@ -46,6 +49,8 @@ public class VendingMachine {
             return CoinConstants.QUARTER;
         } else if (weight == 2.27) {
             return CoinConstants.DIME;
+        } else if (weight == 5.0) {
+            return CoinConstants.NICKEL;
         }
         return CoinConstants.INVALID;
     }
@@ -56,6 +61,8 @@ public class VendingMachine {
             this.currentValue = this.currentValue.add(BigDecimal.valueOf(0.25));
         } else if (CoinConstants.DIME == coinConstant) {
             this.currentValue = this.currentValue.add(BigDecimal.valueOf(0.10));
+        } else if (CoinConstants.NICKEL == coinConstant) {
+            this.currentValue = this.currentValue.add(BigDecimal.valueOf(0.05));
         }
 
     }

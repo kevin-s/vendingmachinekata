@@ -74,4 +74,12 @@ public class VendingMachineTest {
 
         assertEquals("$0.35", machine.getDisplay());
     }
+
+    @Test
+    public void testOneNickel() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(0.835, 5.0);
+
+        assertEquals("$0.05", machine.getDisplay());
+    }
 }
