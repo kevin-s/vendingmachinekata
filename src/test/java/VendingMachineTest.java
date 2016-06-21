@@ -110,4 +110,36 @@ public class VendingMachineTest {
         assertEquals("$0.50", machine.getDisplay());
 
     }
+
+    @Test
+    public void testInvalidCoin1() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.0);
+
+        assertEquals("INSERT COIN", machine.getDisplay());
+    }
+
+    @Test
+    public void testInvalidCoin2() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(0, 0);
+
+        assertEquals("INSERT COIN", machine.getDisplay());
+    }
+
+    @Test
+    public void testInvalidCoin3() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(99.99, 99.99);
+
+        assertEquals("INSERT COIN", machine.getDisplay());
+    }
+
+    @Test
+    public void testHalfDollar() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.205, 11.340);
+
+        assertEquals("INSERT COIN", machine.getDisplay());
+    }
 }
