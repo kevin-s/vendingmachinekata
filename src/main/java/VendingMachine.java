@@ -26,6 +26,37 @@ public class VendingMachine {
     }
 
     public void insertCoin(double diameter, double weight) {
-        currentValue = currentValue.add(BigDecimal.valueOf(0.25));
+
+        if (checkDiameter(diameter) == checkWeight(weight)) {
+            addValue(checkWeight(weight));
+        }
+    }
+
+    private int checkDiameter(double diameter) {
+        if (diameter == 1.0) {
+            return CoinConstants.QUARTER;
+        } else if (diameter == 0.705) {
+            return CoinConstants.DIME;
+        }
+        return CoinConstants.INVALID;
+    }
+
+    private int checkWeight(double weight) {
+        if (weight == 5.67) {
+            return CoinConstants.QUARTER;
+        } else if (weight == 2.27) {
+            return CoinConstants.DIME;
+        }
+        return CoinConstants.INVALID;
+    }
+
+    private void addValue(int coinConstant) {
+
+        if (CoinConstants.QUARTER == coinConstant) {
+            this.currentValue = this.currentValue.add(BigDecimal.valueOf(0.25));
+        } else if (CoinConstants.DIME == coinConstant) {
+            this.currentValue = this.currentValue.add(BigDecimal.valueOf(0.10));
+        }
+
     }
 }

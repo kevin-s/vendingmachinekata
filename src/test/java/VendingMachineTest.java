@@ -48,4 +48,12 @@ public class VendingMachineTest {
 
         assertEquals("$0.75", machine.getDisplay());
     }
+
+    @Test
+    public void testOneDime() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(0.705, 2.27);
+
+        assertEquals("$0.10", machine.getDisplay());
+    }
 }
