@@ -151,4 +151,29 @@ public class VendingMachineTest {
         assertEquals("$0.00", machine.getCoinReturn());
     }
 
+
+
+    @Test
+    public void makeChangeNoSelection() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        assertEquals("$0.25", machine.getDisplay());
+
+        machine.makeChange();
+        assertEquals("INSERT COIN", machine.getDisplay());
+        assertEquals("$0.25", machine.getCoinReturn());
+    }
+
+    @Test
+    public void cantCollectCoinsMoreThanOnce() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(1.0, 5.67);
+        assertEquals("$0.25", machine.getDisplay());
+
+        machine.makeChange();
+        assertEquals("INSERT COIN", machine.getDisplay());
+        assertEquals("$0.25", machine.getCoinReturn());
+        assertEquals("$0.00", machine.getCoinReturn());
+
+    }
 }
