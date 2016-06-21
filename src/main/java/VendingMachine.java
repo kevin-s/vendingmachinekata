@@ -80,11 +80,12 @@ public class VendingMachine {
     }
 
     public void selectProduct(String product) {
-        if (this.currentValue.compareTo(BigDecimal.valueOf(this.getPriceOfProduct(product))) == -1) {
+        BigDecimal priceOfProduct = BigDecimal.valueOf(this.getPriceOfProduct(product));
+        if (this.currentValue.compareTo(priceOfProduct) == -1) {
             this.specialMessageState = "PRICE " +
-                    formatBigDecimalAsString(BigDecimal.valueOf(this.getPriceOfProduct(product)));
+                    formatBigDecimalAsString(priceOfProduct);
         } else {
-            this.currentValue = this.currentValue.subtract(BigDecimal.valueOf(this.getPriceOfProduct(product)));
+            this.currentValue = this.currentValue.subtract(priceOfProduct);
             this.specialMessageState = "THANK YOU";
         }
     }
