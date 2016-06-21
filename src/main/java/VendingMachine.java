@@ -30,7 +30,11 @@ public class VendingMachine {
             return INITIAL_MESSAGE;
         }
 
-        return NumberFormat.getCurrencyInstance().format(this.currentValue);
+        return formatBigDecimalAsString(this.currentValue);
+    }
+
+    private String formatBigDecimalAsString(BigDecimal input) {
+        return NumberFormat.getCurrencyInstance().format(input);
     }
 
     public void insertCoin(double diameter, double weight) {
@@ -77,7 +81,8 @@ public class VendingMachine {
 
     public void selectProduct(String product) {
         if (this.currentValue.compareTo(BigDecimal.valueOf(this.getPriceOfProduct(product))) == -1) {
-            this.specialMessageState = "PRICE " + this.getPriceOfProduct(product);
+            this.specialMessageState = "PRICE " +
+                    formatBigDecimalAsString(BigDecimal.valueOf(this.getPriceOfProduct(product)));
         } else {
             this.currentValue = this.currentValue.subtract(BigDecimal.valueOf(this.getPriceOfProduct(product)));
             this.specialMessageState = "THANK YOU";
